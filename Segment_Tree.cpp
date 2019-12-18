@@ -81,7 +81,7 @@ int main(){
 			long long i,j;cin >> i >> j;
 			cout << sum(1,1,n,i,j) << endl;
 		}
-		else if(cc=='P'){// increasing the number of each element in the interval {i,j} by k
+		else if(cc=='P'){// increasing the value of each element in the interval {i,j} by k
 			long long i,j,k;cin >> i >> j >> k;
 			update(1,1,n,i,j,k);
 		}
