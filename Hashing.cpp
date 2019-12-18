@@ -1,4 +1,4 @@
-// it gives the number of unique substrings of a string
+// it gives the number of unique substrings of length k
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
