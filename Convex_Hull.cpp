@@ -23,7 +23,7 @@ bool ccw(pt a,pt b,pt c){
     return (b.y-a.y)/(b.x-a.x)<(c.y-a.y)/(c.x-a.x);//slope formula
 }
 int main(){
-	ios_base::sync_with_stdio(false);cin.tie(0);
+    ios_base::sync_with_stdio(false);cin.tie(0);
     int n;cin >> n;
     vector <pt> a;
     a.resize(n);
