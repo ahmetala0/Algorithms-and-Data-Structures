@@ -7,7 +7,7 @@ int segment_tree[4*mx],height[mx],first_time_occuring_in_the_array[mx],has_root[
 vector <int> v[mx],euler;
 int n,root;
 
-void dfs(int node,int h){//dfs for euler tour
+void dfs(int node,int h){//dfs for the euler tour
 	visited[node]=1;
 	height[node]=h;
 	first_time_occuring_in_the_array[node]=euler.size();
@@ -20,7 +20,7 @@ void dfs(int node,int h){//dfs for euler tour
 	}
 }
 
-void build(int x,int l,int r){//building a segment tree for rmq
+void build(int x,int l,int r){//building a segment tree for the range minimum query
 	if(l==r)segment_tree[x]=euler[l];
 	else{
 		int mid=(l+r)/2;
@@ -47,16 +47,16 @@ int main(){
 	ios_base::sync_with_stdio(false);cin.tie(0);
 	cin >> n;//number of nodes
 	for(int i=1;i<=n;++i){
-		int q;cin >> q;//number of descendants of i-th node
+		int q;cin >> q;//number of descendants of the i-th node
 		for(int j=0;j<q;++j){
-			int num;cin >> num;//taking the descendants of i-th node 
+			int num;cin >> num;//taking the descendants of the i-th node 
 			v[i].push_back(num);
 			v[num].push_back(i);
 			has_root[num]=1;
 		}
 	}
 	for(int i=1;i<=n;++i){
-		if(has_root[i]!=1)root=i;//finding the has_root of the tree
+		if(has_root[i]!=1)root=i;//finding the root of the tree
 	}
 	euler.push_back(0);//in order to start from the index 1
 	dfs(root,1);
