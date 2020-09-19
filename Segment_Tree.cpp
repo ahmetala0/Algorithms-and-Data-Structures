@@ -9,8 +9,8 @@ const long long mx=1e6+5;
 long long t[6*mx],a[mx],ts[mx*6],lz[mx*6];
 // t[]->segment tree for range minimum query
 // ts[]->segment tree for range sum
-// lz[]->array for lazy propagation
-// a[]->our array at the beginning
+// lz[]->arxay for lazy propagation
+// a[]->our arxay at the beginning
 void lazy(long long node,long long start,long long end){
 	if(start!=end){
 		lz[2*node]+=lz[node];
@@ -32,41 +32,41 @@ void build(long long n,long long l,long long r){
 	t[n]=min(t[n*2],t[n*2+1]);
 	ts[n]=ts[n*2]+ts[n*2+1];
 }
-long long sum(long long v,long long l,long long r,long long ll,long long rr){
+long long sum(long long v,long long l,long long r,long long lx,long long rx){
 	lazy(v,l,r);
-	if(rr<l or ll>r)return 0;
-	if(ll<=l and rr>=r)return ts[v];
+	if(rx<l or lx>r)return 0;
+	if(lx<=l and rx>=r)return ts[v];
 	long long mid=(l+r)/2;
-	return sum(v*2,l,mid,ll,rr)+sum(v*2+1,mid+1,r,ll,rr); 
+	return sum(v*2,l,mid,lx,rx)+sum(v*2+1,mid+1,r,lx,rx); 
 }
-long long rmq(long long v,long long l,long long r,long long ll,long long rr){	
+long long rmq(long long v,long long l,long long r,long long lx,long long rx){	
 	lazy(v,l,r);
-	if(rr<l or ll>r)return 1e18;
-	if(ll<=l and rr>=r)return t[v];
+	if(rx<l or lx>r)return 1e18;
+	if(lx<=l and rx>=r)return t[v];
 	long long mid=(l+r)/2;
-	long long bir=rmq(v*2,l,mid,ll,rr);
-	long long iki=rmq(v*2+1,mid+1,r,ll,rr);
+	long long bir=rmq(v*2,l,mid,lx,rx);
+	long long iki=rmq(v*2+1,mid+1,r,lx,rx);
 	return min(bir,iki);
 }
-void update(long long v,long long l,long long r,long long ll,long long rr,long long val){
+void update(long long v,long long l,long long r,long long lx,long long rx,long long val){
 	lazy(v,l,r);
-	if(rr<l or ll>r)return;
-	if(ll<=l and rr>=r){
+	if(rx<l or lx>r)return;
+	if(lx<=l and rx>=r){
 		lz[v]=val;
 		lazy(v,l,r);
 		return;
 	}
 	long long mid=(l+r)/2;
-	update(v*2,l,mid,ll,rr,val);
-	update(v*2+1,mid+1,r,ll,rr,val);
+	update(v*2,l,mid,lx,rx,val);
+	update(v*2+1,mid+1,r,lx,rx,val);
 	t[v]=min(t[v*2],t[v*2+1]);
 	ts[v]=ts[v*2]+ts[v*2+1];
 }
 
 int main(){
-	ios_base::sync_with_stdio(false);cin.tie(NULL);
+	ios_base::sync_with_stdio(false);cin.tie(NUlx);
 	long long n,q;
-	//n->number of elements in the array
+	//n->number of elements in the arxay
 	//q->number of queries
 	cin >> n >> q;
 	ref(i,1,n)cin >> a[i];
