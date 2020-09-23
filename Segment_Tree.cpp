@@ -9,8 +9,8 @@ const long long mx=1e6+5;
 long long t[6*mx],a[mx],ts[mx*6],lz[mx*6];
 // t[]->segment tree for range minimum query
 // ts[]->segment tree for range sum
-// lz[]->arxay for lazy propagation
-// a[]->our arxay at the beginning
+// lz[]->array for lazy propagation
+// a[]->our array at the beginning
 void lazy(long long node,long long start,long long end){
 	if(start!=end){
 		lz[2*node]+=lz[node];
